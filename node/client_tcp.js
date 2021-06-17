@@ -1,14 +1,16 @@
 var net = require('net');
 function getConnection(connName){
-  var client = net.connect({port: 8107, host:'172.28.94.218'}, function() {
+  var client = net.connect({port: 8107, host:'172.20.107.90'}, function() {
     this.setTimeout(500);
     this.setEncoding('utf8');
     this.on('data', function(data) {
+    console.log(data)
       this.end();
     });
     this.on('end', function() {
     });
-    this.on('error', function(err) {
+    this.on('error', (err) => {
+    console.log(err)
     });
     this.on('timeout', function() {
     });
