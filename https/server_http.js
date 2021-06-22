@@ -19,7 +19,7 @@ var io = require("socket.io")(server);
 var roomName;
 io.on("connection", function (socket) {
   console.log("connect");
-  var instanceId = socket.id;
+  var instancedId = socket.id;
   socket.on("joinRoom", function (data) {
     console.log(data);
     socket.join(data.roomName);
@@ -29,6 +29,6 @@ io.on("connection", function (socket) {
     console.log(data);
     io.sockets
       .in(roomName)
-      .emit("recMsg", { comment: instanceId + " : " + data.comment + "\n" });
+      .emit("recMsg", { comment: instancedId + " : " + data.comment + "\n" });
   });
 });
